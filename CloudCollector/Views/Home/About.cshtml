@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+}
+
+<!--顶部背景图片-->
+<div class="m-bg-type_outer" style="width: 100%;height: 40%">
+    <img src="~/images/messagebg.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+    <div class="m-bg-class_cover">
+        <div class="ui container" style="position: relative ;bottom: -540px;">
+            <div class="m-font-size-title" align="center" style="font-family:'STXingkai'">关于我</div>
+            <div class="m-font-size-text-init-title m-margin-top" align="center">@Model.Sign</div>
+        </div>
+    </div>
+</div>
+
+<!--个人资料描述-->
+<div class="ui container m-opacity box-shadow-max">
+    <div class="ui segment m-margin-" align="center">
+        <div class="m-margin-top-large" align="center">
+            <!--img class="ui circular image" align="middle" src="~/images/me.jpg" style="width: 150px;height: 150px;"-->
+            <img class="ui circular image" align="middle" src="@Model.HeadImg" style="width: 150px;height: 150px;">
+        </div>
+        <div class="m-margin-top-small" style="font-size: x-large;font-family: STSong" align="center">@Model.Name</div>
+
+        <div class="m-margin-top" align="center">
+            <a href="#" class="ui tencent circular icon button"><i class="user icon"></i></a>
+            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+            <a href="https://github.com/MrLIsharp" target="_blank" class="ui github circular icon button" data-content="点击跳转GitHub" data-position="bottom center"><i class="github icon"></i></a>
+            <a href="#" class="ui email circular icon button" data-content="673905504@qq.com" data-position="bottom center"><i class="envelope  icon"></i></a>
+        </div>
+
+        <div class="ui tencent-qr flowing popup transition hidden">
+            <img src="~/images/oneStar.jpg" alt="" class="ui rounded image" style="width: 110px">
+            <div align="center">公众号</div>
+        </div>
+        <div class="ui wechat-qr flowing popup transition hidden">
+            <img src="~/images/oneStarWechat.jpg" alt="" class="ui rounded image" style="width: 110px">
+            <div align="center">微信</div>
+        </div>
+        <hr class="m-margin-top-small" style="width: 30%">
+        <br>
+        <div>
+            @Html.Raw(Model.About) 
+        </div>
+        <hr class="m-margin-top-large">
+        <br>
+        <h2 class="m-margin-tb-tiny" style="font-size: xx-large;font-weight: bold;color: #F08047;font-family: STSong">打赏本站</h2>
+        <div class="ui orange basic label m-margin-tb-tiny">
+            <p style="font-size: medium">每一次提笔的我们，就像街边的街头艺人，用笔唱着自己的歌谣。如果有一天你感动了，那么期待您请我们来一杯咖啡</p>
+        </div>
+        <div class="ui orange basic label">
+            <div class="ui images" style="font-size: inherit !important;">
+                <div class="image">
+                    <img src="~/images/zhifupay.jpg" alt="" class="ui rounded bordered image" style="width: 180px">
+                    <div>支付宝</div>
+                </div>
+                <div class="image">
+                    <img src="~/images/wechatpay.jpg" alt="" class="ui rounded bordered image" style="width: 180px">
+                    <div>微信</div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="hiddenDiv"></div>-->
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        // 显示公众号
+        $('.tencent').popup({
+            popup: $('.tencent-qr'),
+            position: 'bottom center'
+        });
+
+        // 显示微信
+        $('.wechat').popup({
+            popup: $('.wechat-qr'),
+            position: 'bottom center'
+        });
+
+        // 显示QQ
+        $('.qq').popup({
+            popup: $('.qq-qr'),
+            position: 'bottom center'
+        });
+
+        // 显示邮箱
+        $('.email').popup();
+
+        // 显示CSDN
+        $('.csdn').popup();
+
+        // 显示github
+        $('.github').popup();
+    </script>
+}

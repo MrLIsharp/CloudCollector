@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Cloud";
+}
+
+<!--顶部图片-->
+<div class="m-bg-type_outer" style="width: 100%;height: 40%">
+    <img src="~/images/messagebg.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+    <div class="m-bg-class_cover">
+        <div align="center">
+            <div class="ui container" align="center" style="position: relative ;bottom: -540px;">
+                <div class="m-font-size-title " align="center" style="font-family:'STXingkai'">云彩收集者</div>
+                <div class="m-font-size-text-init-title m-margin-top" align="center">云，是天空最好的文案。</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--中间内容-->
+<div class="m-margin- animated fadeIn">
+    <div class="ui m-opacity container">
+        <div class="box-shadow-max">
+            <div class="ui segment m-padded-tb-large m-opacity">
+                <div class="ui container">
+                    <h1 class="" align="center">云彩收集介绍</h1>
+                    <ui class="list">
+                        <div class="m-margin-left-mini m-margin-tb-tiny" style="font-size: large;font-weight: bold">云彩分类</div>
+                        <br>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">十种主要云彩类型：积云，层积云，层云，高积云，高层云，卷云，卷积云，卷层云，雨层云，积雨云</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">云种和变种：荚状云，毛状云，堡状云，波状云，网状云，辐凑状云，复云</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">附属云：幞状云，缟状云，破片云，悬球状云，幡状云，弧状云，管状云，砧状云</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">其他云：山帽云，旗云，开尔文-亥姆霍兹波，航迹云，火积云，滚轴云，雨幡洞云，马蹄涡，雾和霭，钻石尘，贝母云，夜光云</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">云的光学现象：彩虹云，华，曙暮光条，宝光，彩虹，云虹，22度晕，幻日，环天顶弧，日柱</li>
+                        <br>
+                        <div class="m-margin-left-mini m-margin-tb-tiny" style="font-size: large;font-weight: bold">云彩收集者</div>
+                        <br>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">自然是一朵多变的云，始终一样，却又从不一样。</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">收集东西并不等于要拥有它，你甚至也不用去想如何抓住它，你要做的，只是去看，去记录。</li>
+                        <li class="m-margin-left-big m-margin-tb-tiny" style="font-size: medium">起风了，唯有努力生存</li>
+                    </ui>
+                </div>
+            </div>
+        </div>
+
+        <!--友人帐区域-->
+        <div class="box-shadow-max">
+            <div class="ui top attached teal m-opacity segment box-shadow-max">
+                <div class="ui m-padded-tb-large m-container-tiny">
+                    <div class="ui stackable m-container-mini m-opacity grid">
+
+                        <!--友人帐显示区域-->
+                        @foreach (var item in Model)
+                        {
+                            <div class="m-margin-tb-tiny four wide column">
+                                <a href="Detail?id=@item.Id" class="class_outer" target="_blank">
+                                    <div align="center">
+                                        <div class="friends-link">
+                                            <img src="@item.Pic" alt="" class="friends-link-image">
+                                            <div class="m-margin-top">
+                                                <h4 class="m-font-size-text-friends m-margin-tb-tiny">@item.Name</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

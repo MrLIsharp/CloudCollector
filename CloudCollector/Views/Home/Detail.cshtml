@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<!--顶部图片-->
+<div class="m-bg-type_outer" style="width: 100%;height: 50%">
+    <img src="~/images/bg.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+    <div class="m-bg-class_cover">     
+        <div class="ui container" style="position: relative ;bottom: -540px;">
+            <h2 class="m-font-size-title-large" align="center">@(Model.cloud.Name)</h2>
+            <div class="ui container" align="center">
+                <div class="ui horizontal link list" align="center">
+                    <div class="item">
+                        <div class="ui orange basic label" style="font-size: 7px">原创</div>
+                    </div>
+                    <div class="item">
+                        <a href="#" style="color: #ffffff;font-size: 18px">创建者：@(Model.cloud.CreatorName)</a>
+                    </div>
+                    <div class="item">
+                        <span class="m-font-size-text-mini">创建于：@(Model.cloud.Date)</span>
+                    </div>
+                    <div class="item">
+                        <a href="#" target="_blank" style="color: #ffffff;font-size: 16px">云彩收集者</a>
+                    </div>
+                    <div class="item">
+                        <span class="m-font-size-text-mini">浏览：@Model.cloud.SeeCount</span>
+                    </div>
+                </div>
+            </div>
+            <h3 class="m-font-size-title-large" align="center" style="margin-top:5px;">云彩收集者——自然是一朵多变的云，始终一样，却又从不一样</h3>
+        </div>
+    </div>
+</div>
+
+<!--中间内容-->
+<div id="waypoint" class="m-margin- animated fadeIn">
+    <div class="ui container m-opacity box-shadow-max">
+        <!--内容-->
+        <div class="ui attached padded segment">
+
+
+            <!--中间主要内容部分-->
+            <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+
+                <img src="@Model.cloud.Pic" alt="" class="ui rounded image">
+                <h4>云朵介绍：</h4>
+
+                <p class="typo-first">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.cloud.Memo
+                </p>
+            </div>
+
+            <div class="ui horizontal divider">end</div>
+
+
+            <!--赞赏-->
+            <div>
+                <div class="ui center aligned basic segment">
+                    <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                </div>
+                <div class="ui payQR flowing popup transition hidden">
+                    <div class="ui orange basic label">
+                        <div class="ui images" style="font-size: inherit !important;">
+                            <div class="image">
+                                <img src="~/images/zhifupay.jpg"  alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>支付宝</div>
+                            </div>
+                            <div class="image">
+                                <img src="~/images/wechatpay.jpg" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>微信</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="goto" class="ui attached positive message">
+            <!--博客信息-->
+            <div class="ui middle aligned grid">
+                <div class="nine wide column">
+                    <ui class="list">
+                        <li>作者：<span>冰河盲鱼</span><a href="#" target="_blank">（联系作者）</a></li>
+                        <li>发表时间：<span>2020-01-02 09:08</span></li>
+                        <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
+                        <li>转载声明：如果是转载栈主转载的文章，请附上原文链接</li>
+                        <li>公众号转载：请在文末添加作者公众号二维码（公众号二维码见右边，欢迎关注）</li>
+                    </ui>
+                </div>
+                <!--微信公众号-->
+                <div class="seven wide column">
+                    <img src="~/images/oneStar1.jpg" alt="" class="ui right floated rounded bordered image" style="width: 707px">
+                </div>
+            </div>
+        </div>
+        <div class="ui bottom attached segment">
+            <!--评论区域列表-->
+            <div id="comment-container" class="ui teal segment">
+                <div>
+                    <div class="ui threaded comments" style="max-width: 100%;">
+                        <h3 class="ui dividing header">评论</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="~/images/avatar.png">
+                            </a>
+                            <div class="content">
+                                <a class="author">
+                                    <span>冰河盲鱼</span>
+                                    <div class="ui mini basic teal left pointing label m-padded-mini">栈主</div>
+                                </a>
+                                <div class="metadata">
+                                    <span class="date">@(Model.cloud.Date)</span>
+                                </div>
+                                <div class="text">
+                                    欢迎大家来评论啊！！！
+                                </div>
+                                @*<div class="actions">
+                                <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)">回复</a>
+                                <a class="delete" href="#" onclick="return confirm('确定要删除该评论吗？三思啊! 删了可就没了！')" th:if="${session.user}">删除</a>
+
+                            </div>*@
+                            </div>
+                            <!--子集评论-->
+                            @foreach (var item in Model.message)
+                            {
+
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="@item.HeadImg">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">
+                                            <span>@item.CreatorName</span>
+                                            <div class="ui mini basic teal left pointing label m-padded-mini">游客</div>
+                                            &nbsp;<span class="m-teal">冰河盲鱼</span>
+                                        </a>
+                                        <div class="metadata">
+                                            <span class="date">@item.CreateDate</span>
+                                        </div>
+                                        <div class="text">
+                                            @item.Context
+                                        </div>
+                                        @*<div class="actions">
+                                            <a class="reply" data-commentid="1" data-commentnickname="Matt" onclick="reply(this)">回复</a>
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <form asp-action="Detail">
+                <div id="comment-form" class="ui form">
+                    <input type="hidden" name="blogId">
+                    <input type="hidden" name="parentComment.id" value="-1">
+                    <div class="field">
+                        <textarea name="Context" placeholder="请输入评论信息..."></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="CreatorName" placeholder="昵称">
+                                <input type="text" name="CloudId" value="@Model.cloud.Id" hidden>
+                            </div>
+                        </div>
+                        <div class="field  m-margin-bottom-small m-mobile-wide">
+                            <button id="commentpost-btn" type="submit" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
+    <div class="ui vertical icon buttons ">
+        <button type="button" class="ui toc teal button">目录</button>
+        <a href="#comment-container" class="ui teal button">评论</a>
+        <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></div>
+    </div>
+</div>
+
+<div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
+    <ol class="js-toc">
+    </ol>
+</div>
+
+<div id="qrcode" class="ui wechat-qr flowing popup transition hidden " style="width: 130px !important;">
+    <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
+</div>
+
